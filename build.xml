@@ -1,0 +1,18 @@
+<project name="Dbms" default="default" basedir="." xmlns:javac="antlib:org.apache.tools.ant.taskdefs.optional.compilers.Javac12">
+    <description>Builds, tests, and runs the project Dbms.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <!-- Define path to the lib directory containing external JARs -->
+    <path id="classpath">
+        <fileset dir="lib" includes="*.jar"/>
+    </path>
+
+    <!-- Override the compile target to include the JDBC driver in the classpath -->
+    <target name="-pre-compile">
+        <mkdir dir="${build.dir}"/>
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+</project>
